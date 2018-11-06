@@ -5,16 +5,26 @@
     "prod": "cross-env NODE_ENV=production webpack --no-progress"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^4.6.0",
     "cross-env": "^5.1",
-    "css-loader": "^0.28.10",
+    "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.0.6",
+    "node-sass": "^4.10.0",
     "postcss": "^6.0.19",
+    "postcss-import": "^12.0.1",
     "postcss-loader": "^2.1.1",
-    "style-loader": "^0.20.3",
-    "tailwindcss": ">=0.6.5",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.12",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "tailwindcss": ">=0.7.2",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.1"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "slick-carousel": "^1.8.1"
   }
 }

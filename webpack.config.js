@@ -1,9 +1,13 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/styles.css',
+  entry: './src/scripts/main.js',
+  output: {
+    filename: 'bundle.js'
+  },
   mode: process.env.NODE_ENV,
   module: {
     rules: [
@@ -17,6 +21,26 @@ module.exports = {
           ],
         }),
       },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,  
+        use: [{
+            loader: 'url-loader',
+            options: { 
+                limit: 8000, // Convert images < 8kb to base64 strings
+                name: 'images/[hash]-[name].[ext]'
+            } 
+        }]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [{
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]',
+                outputPath: 'fonts/'
+            }
+        }]
+      }
     ],
   },
   plugins: [
@@ -27,5 +51,8 @@ module.exports = {
       filename: 'index.html',
       template: 'src/index.html',
     }),
+    new CopyWebpackPlugin([
+      {from:'src/images',to:'images'} 
+    ]),
   ],
 }
